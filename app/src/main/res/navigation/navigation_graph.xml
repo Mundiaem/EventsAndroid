@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/eventsFragment">
+    app:startDestination="@id/events_fragment">
 
     <fragment
         android:id="@+id/welcomeFragment"
@@ -11,7 +11,7 @@
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome" />
     <fragment
-        android:id="@+id/eventsFragment"
+        android:id="@+id/events_fragment"
         android:name="com.treadstone.grpproject.daropointsevents.fragments.Events"
         android:label="EventsFragment"
         tools:layout="@layout/fragment_events" />
@@ -21,14 +21,25 @@
         android:label="SimilarEventsFragment"
         tools:layout="@layout/fragment_apply_events" />
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="org.fossasia.openevent.general.search.SearchFragment"
+        android:id="@+id/invited_event"
+        android:name="com.treadstone.grpproject.daropointsevents.fragments.InvitedEvents"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" >
-        <argument
-            android:name="@string/saved_date"
-            app:argType="string" />
+        tools:layout="@layout/fragment_invited_events" >
+
     </fragment>
 
+    <fragment
+        android:id="@+id/log_in"
+        android:name="com.treadstone.grpproject.daropointsevents.fragments.Login"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_login" >
 
+    </fragment>
+    <fragment
+        android:id="@+id/sign_up"
+        android:name="com.treadstone.grpproject.daropointsevents.fragments.SignUp"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_sign_up" >
+
+    </fragment>
 </navigation>
