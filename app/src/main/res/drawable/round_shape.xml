@@ -3,5 +3,5 @@
     android:shape="oval">
     <stroke
         android:width="@dimen/card_corner_radius"
-        android:color="@color/greyMore" />
+        android:color="#f7f0" />
 </shape>

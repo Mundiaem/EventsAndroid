@@ -4,4 +4,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">LogIn</string>
+    <string name="sign_up">SignUp</string>
+    <string name="events">Events</string>
+    <string name="search">Search</string>
+    <string name="likes">Likes</string>
+    <string name="tickets">TICKETS</string>
+    <string name="profile">profile</string>
+    <string name="sign_in_canceled">sign in canceled</string>
 </resources>
