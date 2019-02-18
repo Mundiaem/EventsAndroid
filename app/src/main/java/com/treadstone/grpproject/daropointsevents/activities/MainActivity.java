@@ -2,14 +2,14 @@ package com.treadstone.grpproject.daropointsevents.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +19,9 @@ import com.treadstone.grpproject.daropointsevents.R;
 import java.util.Objects;
 
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import static androidx.navigation.ui.NavigationUI.setupWithNavController;
 import static com.treadstone.grpproject.daropointsevents.utils.Constants.RC_CREDENTIALS_READ;
@@ -46,47 +46,53 @@ public class MainActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
         mNavigationBottom = findViewById(R.id.navigation);
         mNavigationBottomAuth = findViewById(R.id.navigationAuth);
-//        Fragment hostFragment = getSupportFragmentManager().findFragmentById(R.id.frameContainer);
-//        final NavController navController = Navigation.findNavController(this, R.id.frameContainer);
-//        mNavigationBottom.setOnClickListener((View v) -> {
-//            navController.navigate(R.id.action_settings);
+        mNavigationBottomAuth.setVisibility(View.GONE);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.frameContainer);
+        NavigationUI.setupWithNavController(mNavigationBottom, navHostFragment.getNavController());
+//        mNavigationBottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.profileFragment:
+//                        mNavigationBottomAuth.setVisibility(View.VISIBLE);
+//                        break;
+//                }
+//                return false;
+//            }
 //        });
-      view = findViewById(R.id.mainFragmentCoordinatorLayout);
-        Fragment hostFragment = getSupportFragmentManager().findFragmentById(R.id.frameContainer);
-        assert hostFragment != null;
-        if (Objects.equals(hostFragment.getHost(), navHostFragment))
-        navController = navHostFragment.getNavController();
-        setupBottomNavigationMenu(navController);
-
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            currentFragmentId = destination.getId();
-            handleNavigationVisibility(currentFragmentId) ;
-        });
     }
 
     private void handleNavigationVisibility(int id) {
         switch (id) {
             case R.id.apply_events:
+                navController.navigate(R.id.apply_events);
+                navAnimGone(mNavigationBottomAuth,this);
                 navAnimVisible(mNavigationBottom, this);
+
                 break;
-            case R.id.searchFragment:
+            case R.id.eventsFragment:
+                navController.navigate(R.id.eventsFragment);
+                navAnimGone(mNavigationBottomAuth,this);
                 navAnimVisible(mNavigationBottom, this);
 
                 break;
             case R.id.profileFragment:
+                navController.navigate(R.id.profileFragment);
+                navAnimGone(mNavigationBottomAuth,this);
                 navAnimVisible(mNavigationBottom, this);
-
                 break;
             case R.id.orderUnderUserFragment:
+                navController.navigate(R.id.orderUnderUserFragment);
+                navAnimGone(mNavigationBottomAuth,this);
                 navAnimVisible(mNavigationBottom, this);
-
                 break;
-            case R.id.favoriteFragment:
+            case R.id.invited_event:
+                navController.navigate(R.id.invited_event);
                 navAnimVisible(mNavigationBottom, this);
 
                 break;
             default:
-                navAnimGone(mNavigationBottom, this);
+                //navAnimGone(mNavigationBottom, this);
         }
         switch (id) {
             case R.id.log_in:
@@ -113,13 +119,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.loginFragment:
                 navController.popBackStack(R.id.eventsFragment, false);
                 Snackbar.make(
-                        view, getString(R.id.sign_canceled), Snackbar.LENGTH_SHORT
+                        view, getResources().getString(R.string.sign_canceled), Snackbar.LENGTH_SHORT
                 ).show();
                 break;
             case R.id.signUpFragment:
                 navController.popBackStack(R.id.eventsFragment, false);
                 Snackbar.make(
-                        view, getString(R.id.sign_canceled), Snackbar.LENGTH_SHORT
+                        view, getResources().getString(R.string.sign_canceled), Snackbar.LENGTH_SHORT
                 ).show();
                 break;
             default:

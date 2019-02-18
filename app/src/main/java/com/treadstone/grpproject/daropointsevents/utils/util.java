@@ -1,19 +1,15 @@
 package com.treadstone.grpproject.daropointsevents.utils;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
 import com.treadstone.grpproject.daropointsevents.R;
-import com.treadstone.grpproject.daropointsevents.activities.MainActivity;
-
-import androidx.navigation.NavOptions;
 
 public class util {
 

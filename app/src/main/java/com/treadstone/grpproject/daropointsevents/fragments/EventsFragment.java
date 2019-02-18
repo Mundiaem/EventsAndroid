@@ -2,7 +2,7 @@ package com.treadstone.grpproject.daropointsevents.fragments;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +12,10 @@ import com.treadstone.grpproject.daropointsevents.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Events extends Fragment {
+public class EventsFragment extends Fragment {
 
 
-    public Events() {
+    public EventsFragment() {
         // Required empty public constructor
     }
 

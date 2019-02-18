@@ -12,4 +12,11 @@
     <string name="tickets">TICKETS</string>
     <string name="profile">profile</string>
     <string name="sign_in_canceled">sign in canceled</string>
+    <string name="sign_canceled">sign canceled</string>
+    <string name="apply_events_fragment">Apply Events FRAGMENTS</string>
+    <string name="EVENTS_fragment">events fragments</string>
+    <string name="invited_blank_fragment">invited fragments</string>
+    <string name="login_blank_fragment">Login Fragment</string>
+    <string name="signup_blank_fragment">signup fragment</string>
+    <string name="welcome_blank_fragment">Welcome Fragment</string>
 </resources>

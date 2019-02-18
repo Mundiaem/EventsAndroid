@@ -3,7 +3,7 @@ package com.treadstone.grpproject.daropointsevents.models.events;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class events {
+public class Events {
     @SerializedName("id")
     @Expose
     int id;
