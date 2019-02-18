@@ -21,8 +21,9 @@
         android:icon="@drawable/ic_outline_ticket_24dp"
         android:title="@string/tickets" />
 
+
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/profile_fragment"
         android:icon="@drawable/ic_outline_account_circle_24dp"
         android:title="@string/profile" />
 

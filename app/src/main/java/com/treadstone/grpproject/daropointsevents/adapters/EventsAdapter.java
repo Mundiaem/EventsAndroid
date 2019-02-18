@@ -28,12 +28,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemsView = LayoutInflater.from(parent.getContext()).inflate(R.layout.events_items_res, parent, false);
+        View itemsView = LayoutInflater.from(parent.getContext()).inflate(R.layout.events_items_card, parent, false);
         return new ViewHolder(itemsView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Events event = mEvents.get(position);
 
 
     }
@@ -44,6 +45,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }

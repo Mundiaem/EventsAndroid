@@ -25,7 +25,8 @@
             app:elevation="@dimen/fab_elevation"
             app:backgroundTint="@android:color/white"
             app:srcCompat="@drawable/ic_share_grey_24dp"
-            android:background="@android:color/white" />
+            android:background="@android:color/white"
+            tools:ignore="VectorDrawableCompat" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="@dimen/fab_width"

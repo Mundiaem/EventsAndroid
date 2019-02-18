@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DaroPointsEvents</string>
+    <string name="app_name">Daro Points Events</string>
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -19,4 +19,26 @@
     <string name="login_blank_fragment">Login Fragment</string>
     <string name="signup_blank_fragment">signup fragment</string>
     <string name="welcome_blank_fragment">Welcome Fragment</string>
+    <string name="current_location">Jkuat Students Events Application</string>
+    <string name="pick_a_city">Get Started</string>
+    <string name="start_text_2">Events In Jkuat</string>
+    <string name="start_text_1">Welcome to Jkuat Events. Where color of life begins.</string>
+    <string name="jkuat_event_logo">Jkuat Events Logo</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="confirm_password">confirm_password</string>
+    <string name="first_name_optional">first_name_optional</string>
+    <string name="last_name_optional">last name</string>
+    <string name="email_sent_alert">email  sent alert</string>
+    <string name="email_sent_message">email sent message</string>
+    <string name="forgot_password">forgot password</string>
+    <string name="refund_Policy">Refund Policy</string>
+    <string name="about">About</string>
+    <string name="see_more">See More</string>
+    <string name="location">Location</string>
+    <string name="organizer">Organizer</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="other_information">Other Information</string>
+    <string name="log_in_first">Log In First</string>
 </resources>

@@ -3,11 +3,11 @@ package com.treadstone.grpproject.daropointsevents.activities;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import androidx.fragment.app.Fragment;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
@@ -15,19 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.treadstone.grpproject.daropointsevents.R;
-
-import java.util.Objects;
+import com.treadstone.grpproject.daropointsevents.utils.Utils;
 
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
+
 
 import static androidx.navigation.ui.NavigationUI.setupWithNavController;
 import static com.treadstone.grpproject.daropointsevents.utils.Constants.RC_CREDENTIALS_READ;
 import static com.treadstone.grpproject.daropointsevents.utils.Constants.RC_CREDENTIALS_SAVE;
-import static com.treadstone.grpproject.daropointsevents.utils.util.navAnimGone;
-import static com.treadstone.grpproject.daropointsevents.utils.util.navAnimVisible;
+import static com.treadstone.grpproject.daropointsevents.utils.Utils.navAnimGone;
+import static com.treadstone.grpproject.daropointsevents.utils.Utils.navAnimVisible;
 
 public class MainActivity extends AppCompatActivity {
     private static final NavHostFragment navHostFragment = new NavHostFragment();
@@ -40,70 +38,51 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
         mNavigationBottom = findViewById(R.id.navigation);
         mNavigationBottomAuth = findViewById(R.id.navigationAuth);
-        mNavigationBottomAuth.setVisibility(View.GONE);
+
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.frameContainer);
-        NavigationUI.setupWithNavController(mNavigationBottom, navHostFragment.getNavController());
-//        mNavigationBottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.profileFragment:
-//                        mNavigationBottomAuth.setVisibility(View.VISIBLE);
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
+        setupBottomNavigationMenu(navHostFragment.getNavController());
+        view = findViewById(R.id.mainFragmentCoordinatorLayout);
+
+        navController = navHostFragment.getNavController();
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            currentFragmentId = destination.getId();
+
+            if (currentFragmentId == R.id.profile_fragment) {
+                String args = getString(R.string.log_in_first);
+                Bundle b = new Bundle();
+                b.putString("LogIn First", args);
+                navController.navigate(R.id.log_in, b, Utils.getAnimFade());
+                handleNavigationVisibility(currentFragmentId);
+            } else {
+
+                handleNavigationVisibility(currentFragmentId);
+            }
+
+        });
     }
 
     private void handleNavigationVisibility(int id) {
-        switch (id) {
-            case R.id.apply_events:
-                navController.navigate(R.id.apply_events);
-                navAnimGone(mNavigationBottomAuth,this);
-                navAnimVisible(mNavigationBottom, this);
+        if (id == R.id.welcomeFragment || id == R.id.apply_events || id == R.id.eventsFragment || id == R.id.profile_fragment ||
+                id == R.id.orderUnderUserFragment || id == R.id.invited_event) {
+            navAnimVisible(mNavigationBottom, this);
 
-                break;
-            case R.id.eventsFragment:
-                navController.navigate(R.id.eventsFragment);
-                navAnimGone(mNavigationBottomAuth,this);
-                navAnimVisible(mNavigationBottom, this);
-
-                break;
-            case R.id.profileFragment:
-                navController.navigate(R.id.profileFragment);
-                navAnimGone(mNavigationBottomAuth,this);
-                navAnimVisible(mNavigationBottom, this);
-                break;
-            case R.id.orderUnderUserFragment:
-                navController.navigate(R.id.orderUnderUserFragment);
-                navAnimGone(mNavigationBottomAuth,this);
-                navAnimVisible(mNavigationBottom, this);
-                break;
-            case R.id.invited_event:
-                navController.navigate(R.id.invited_event);
-                navAnimVisible(mNavigationBottom, this);
-
-                break;
-            default:
-                //navAnimGone(mNavigationBottom, this);
+        } else {
+            navAnimGone(mNavigationBottom, this);
         }
-        switch (id) {
-            case R.id.log_in:
-                navAnimVisible(mNavigationBottom, this);
-                break;
-            case R.id.sign_up:
-                navAnimVisible(mNavigationBottom, this);
-                break;
-            default:
-                navAnimGone(mNavigationBottom, this);
+        if (id == R.id.log_in || id == R.id.sign_up) {
+            navAnimVisible(mNavigationBottomAuth, this);
+
+        } else {
+            navAnimGone(mNavigationBottomAuth, this);
         }
+
 
     }
 
@@ -115,21 +94,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        switch (currentFragmentId) {
-            case R.id.loginFragment:
-                navController.popBackStack(R.id.eventsFragment, false);
-                Snackbar.make(
-                        view, getResources().getString(R.string.sign_canceled), Snackbar.LENGTH_SHORT
-                ).show();
-                break;
-            case R.id.signUpFragment:
-                navController.popBackStack(R.id.eventsFragment, false);
-                Snackbar.make(
-                        view, getResources().getString(R.string.sign_canceled), Snackbar.LENGTH_SHORT
-                ).show();
-                break;
-            default:
-                super.onBackPressed();
+        if (currentFragmentId == R.id.log_in || currentFragmentId == R.id.sign_up) {
+
+            navController.popBackStack(R.id.eventsFragment, false);
+            Snackbar.make(
+                    view, R.string.sign_in_canceled, Snackbar.LENGTH_SHORT
+            ).show();
+            navController.navigate(R.id.eventsFragment);
+
+        } else {
+
+            super.onBackPressed();
         }
 
     }
@@ -162,6 +137,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RC_CREDENTIALS_READ || requestCode == RC_CREDENTIALS_SAVE) {
         }
     }
-    }
+}
 
 

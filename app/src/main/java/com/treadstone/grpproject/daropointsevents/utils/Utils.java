@@ -6,12 +6,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavOptions;
+
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
 import com.treadstone.grpproject.daropointsevents.R;
 
-public class util {
+public class Utils {
 
     public void loadFragment(
             FragmentManager fragmentManager,
@@ -30,16 +32,16 @@ public class util {
 //
 //    IllegalStateException("Drawable should not be null")
 //
-//    fun getAnimFade():NavOptions
-//
-//    {
-//        val builder = NavOptions.Builder()
-//        builder.setEnterAnim(R.anim.fade_in)
-//        builder.setExitAnim(R.anim.fade_out)
-//        builder.setPopEnterAnim(R.anim.fade_in)
-//        builder.setPopExitAnim(R.anim.fade_out)
-//        return builder.build()
-//    }
+    public static NavOptions getAnimFade()
+
+    {
+        NavOptions.Builder builder =new NavOptions.Builder();
+        builder.setEnterAnim(R.anim.fade_in);
+        builder.setExitAnim(R.anim.fade_out);
+        builder.setPopEnterAnim(R.anim.fade_in);
+        builder.setPopExitAnim(R.anim.fade_out);
+        return builder.build();
+    }
 //
 //    fun getAnimSlide():NavOptions
 //
