@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "17742110704",
+    "firebase_url": "https://daropointsevents.firebaseio.com",
+    "project_id": "daropointsevents",
+    "storage_bucket": "daropointsevents.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17742110704:android:79b2c1e6cda3a2cd",
+        "android_client_info": {
+          "package_name": "com.treadstone.grpproject.daropointsevents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17742110704-tmjuaft6858bi70m1kcjgmb386mb3pfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKTeO90_KfS6jNMszDfq_s6wGdzqYthEM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
