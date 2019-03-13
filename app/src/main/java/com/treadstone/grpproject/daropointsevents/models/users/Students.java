@@ -25,6 +25,9 @@ public class Students {
     @SerializedName("email")
     @Expose
     String email;
+    @SerializedName("reg_no")
+    @Expose
+    String reg_no;
 
     public int getId() {
         return id;
@@ -32,6 +35,14 @@ public class Students {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getReg_no() {
+        return reg_no;
+    }
+
+    public void setReg_no(String reg_no) {
+        this.reg_no = reg_no;
     }
 
     public String getReg_nu() {
